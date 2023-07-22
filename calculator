@@ -1,0 +1,64 @@
+# main code function
+def main():
+    base_operand, operator, secondary_operand = input("calculation expression with space: ").split()
+    conditions_operators_expressions(base_operand, operator, secondary_operand)
+
+
+def expression_check(expression, base_operand):
+    if expression:
+        operator, secondary_operand = expression.split()
+        conditions_operators_expressions(base_operand, operator, int(secondary_operand))
+    else:
+        print(f"expression = {base_operand}")
+        check_clear = input("continue or end (y|n): ")
+        if check_clear == "y":
+            main()
+        else:
+            print()
+
+
+def conditions_operators_expressions(base_operand, operator, secondary_operand):
+    if operator == "+":
+        base_operand = addition(int(base_operand), int(secondary_operand))
+        expression = input(f"{base_operand} ")
+
+        expression_check(expression, base_operand)
+
+    elif operator == "-":
+        base_operand = subtraction(int(base_operand), int(secondary_operand))
+        expression = input(f"{base_operand} ")
+
+        expression_check(expression, base_operand)
+
+    elif operator == "*":
+        base_operand = multiplication(int(base_operand), int(secondary_operand))
+        expression = input(f"{base_operand} ")
+
+        expression_check(expression, base_operand)
+
+    elif operator == "/":
+        base_operand = division(int(base_operand), int(secondary_operand))
+        expression = input(f"{base_operand} ")
+
+        expression_check(expression, base_operand)
+
+
+# functions for arithmetic operations
+
+def addition(primary, secondary):
+    return primary + secondary
+
+
+def subtraction(primary, secondary):
+    return primary - secondary
+
+
+def multiplication(primary, secondary):
+    return primary * secondary
+
+
+def division(primary, secondary):
+    return primary / secondary
+
+
+main()
